@@ -1,13 +1,9 @@
-[![CircleCI](https://circleci.com/gh/open-quantum-safe/openssh/tree/OQS-v8.svg?style=svg)](https://circleci.com/gh/open-quantum-safe/openssh/tree/OQS-v8)
-
 OQS-OpenSSH
 ==================================
 
 [OpenSSH](https://openssh.org/) is an open-source implementation of the Secure Shell protocol.  ([View the original README](https://github.com/open-quantum-safe/openssh-portable/blob/OQS-master/README.original.md).)
 
 OQS-OpenSSH is a fork of OpenSSH that adds quantum-safe key exchange and signature algorithms using [liboqs](https://github.com/open-quantum-safe/liboqs) for prototyping and evaluation purposes. This fork is not endorsed by the OpenSSH project.
-
-THIS PROJECT IS PRESENTLY INACTIVE. CONTRIBUTORS WANTED.
 
 - [Overview](#overview)
 - [Status](#status)
@@ -31,7 +27,7 @@ Both liboqs and this fork are part of the **Open Quantum Safe (OQS) project**, w
 
 ## Status
 
-This fork is currently based on OpenSSH version **8.9** (Git tag V_8_9_P1); release notes can be found [here](RELEASE.md). **IT IS AT AN EXPERIMENTAL STAGE**, and has not received the same level of auditing and analysis that OpenSSH has received. See the [Limitations and Security](#limitations-and-security) section below for more information.
+This fork is currently based on OpenSSH version **9.7** (Git tag V_9_7_P1); release notes can be found [here](RELEASE.md). **IT IS AT AN EXPERIMENTAL STAGE**, and has not received the same level of auditing and analysis that OpenSSH has received. See the [Limitations and Security](#limitations-and-security) section below for more information.
 
 **WE DO NOT RECOMMEND RELYING ON THIS FORK TO PROTECT SENSITIVE DATA.**
 
@@ -225,6 +221,7 @@ Contributors to this fork of OpenSSH include:
 - Douglas Stebila (University of Waterloo)
 - Goutam Tamvada (University of Waterloo)
 - Michael Baentsch
+- Gerardo Ravago (Amazon Web Services)
 
 Contributors to an earlier OQS fork of OpenSSH included:
 
