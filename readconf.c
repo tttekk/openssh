@@ -1,4 +1,4 @@
-/* $OpenBSD: readconf.c,v 1.386 2024/03/04 04:13:18 djm Exp $ */
+/* $OpenBSD: readconf.c,v 1.387 2024/05/17 02:39:11 jsg Exp $ */
 /*
  * Author: Tatu Ylonen <ylo@cs.hut.fi>
  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
@@ -2759,14 +2759,18 @@ fill_default_options(Options * options)
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ML_DSA_44, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ML_DSA_65, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ML_DSA_87, 0);
+#ifdef EN_MAYO
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_MAYO_2, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_MAYO_3, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_MAYO_5, 0);
+#endif
 #ifdef WITH_OPENSSL
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_RSA3072_FALCON_512, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_RSA3072_SPHINCS_SHA2_128F_SIMPLE, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_RSA3072_ML_DSA_44, 0);
+#ifdef EN_MAYO
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_RSA3072_MAYO_2, 0);
+#endif
 #ifdef OPENSSL_HAS_ECC
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP256_FALCON_512, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP521_FALCON_1024, 0);
@@ -2775,9 +2779,11 @@ fill_default_options(Options * options)
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP256_ML_DSA_44, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP384_ML_DSA_65, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP521_ML_DSA_87, 0);
+#ifdef EN_MAYO
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP256_MAYO_2, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP384_MAYO_3, 0);
 		add_identity_file(options, "~/", _PATH_SSH_CLIENT_ID_ECDSA_NISTP521_MAYO_5, 0);
+#endif
 #endif /* OPENSSL_HAS_ECC */
 #endif /* WITH_OPENSSL */
 ///// OQS_TEMPLATE_FRAGMENT_ADD_ID_FILES_END
@@ -3367,7 +3373,7 @@ parse_ssh_uri(const char *uri, char **userp, char **hostp, int *portp)
 	return r;
 }
 
-/* XXX the following is a near-vebatim copy from servconf.c; refactor */
+/* XXX the following is a near-verbatim copy from servconf.c; refactor */
 static const char *
 fmt_multistate_int(int val, const struct multistate *m)
 {

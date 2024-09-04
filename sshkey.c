@@ -141,15 +141,18 @@ extern const struct sshkey_impl sshkey_sphincssha2256fsimple_impl;
 extern const struct sshkey_impl sshkey_mldsa44_impl;
 extern const struct sshkey_impl sshkey_mldsa65_impl;
 extern const struct sshkey_impl sshkey_mldsa87_impl;
+#ifdef EN_MAYO
 extern const struct sshkey_impl sshkey_mayo2_impl;
 extern const struct sshkey_impl sshkey_mayo3_impl;
 extern const struct sshkey_impl sshkey_mayo5_impl;
-
+#endif
 #ifdef WITH_OPENSSL
 extern const struct sshkey_impl sshkey_rsa3072_falcon512_impl;
 extern const struct sshkey_impl sshkey_rsa3072_sphincssha2128fsimple_impl;
 extern const struct sshkey_impl sshkey_rsa3072_mldsa44_impl;
+#ifdef EN_MAYO
 extern const struct sshkey_impl sshkey_rsa3072_mayo2_impl;
+#endif
 #ifdef OPENSSL_HAS_ECC
 extern const struct sshkey_impl sshkey_ecdsanistp256_falcon512_impl;
 extern const struct sshkey_impl sshkey_ecdsanistp521_falcon1024_impl;
@@ -158,9 +161,11 @@ extern const struct sshkey_impl sshkey_ecdsanistp521_sphincssha2256fsimple_impl;
 extern const struct sshkey_impl sshkey_ecdsanistp256_mldsa44_impl;
 extern const struct sshkey_impl sshkey_ecdsanistp384_mldsa65_impl;
 extern const struct sshkey_impl sshkey_ecdsanistp521_mldsa87_impl;
+#ifdef EN_MAYO
 extern const struct sshkey_impl sshkey_ecdsanistp256_mayo2_impl;
 extern const struct sshkey_impl sshkey_ecdsanistp384_mayo3_impl;
 extern const struct sshkey_impl sshkey_ecdsanistp521_mayo5_impl;
+#endif
 #endif /* OPENSSL_HAS_ECC */
 #endif /* WITH_OPENSSL */
 ///// OQS_TEMPLATE_FRAGMENT_EXTERN_KEY_IMPLS_END
@@ -211,14 +216,18 @@ const struct sshkey_impl * const keyimpls[] = {
 	&sshkey_mldsa44_impl,
 	&sshkey_mldsa65_impl,
 	&sshkey_mldsa87_impl,
+#ifdef EN_MAYO
 	&sshkey_mayo2_impl,
 	&sshkey_mayo3_impl,
 	&sshkey_mayo5_impl,
+#endif
 #ifdef WITH_OPENSSL
 	&sshkey_rsa3072_falcon512_impl,
 	&sshkey_rsa3072_sphincssha2128fsimple_impl,
 	&sshkey_rsa3072_mldsa44_impl,
+#ifdef EN_MAYO
 	&sshkey_rsa3072_mayo2_impl,
+#endif
 #ifdef OPENSSL_HAS_ECC
 	&sshkey_ecdsanistp256_falcon512_impl,
 	&sshkey_ecdsanistp521_falcon1024_impl,
@@ -227,9 +236,11 @@ const struct sshkey_impl * const keyimpls[] = {
 	&sshkey_ecdsanistp256_mldsa44_impl,
 	&sshkey_ecdsanistp384_mldsa65_impl,
 	&sshkey_ecdsanistp521_mldsa87_impl,
+#ifdef EN_MAYO
 	&sshkey_ecdsanistp256_mayo2_impl,
 	&sshkey_ecdsanistp384_mayo3_impl,
 	&sshkey_ecdsanistp521_mayo5_impl,
+#endif
 #endif /* OPENSSL_HAS_ECC */
 #endif /* WITH_OPENSSL */
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_KEYTYPES_END

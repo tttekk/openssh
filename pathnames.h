@@ -1,4 +1,4 @@
-/* $OpenBSD: pathnames.h,v 1.31 2019/11/12 19:33:08 markus Exp $ */
+/* $OpenBSD: pathnames.h,v 1.32 2024/05/17 00:30:24 djm Exp $ */
 
 /*
  * Author: Tatu Ylonen <ylo@cs.hut.fi>
@@ -59,6 +59,7 @@
 #define _PATH_HOST_ECDSA_NISTP384_ML_DSA_65_KEY_FILE SSHDIR "/ssh_host_ecdsa_nistp384_mldsa65_key"
 #define _PATH_HOST_ML_DSA_87_KEY_FILE SSHDIR "/ssh_host_mldsa87_key"
 #define _PATH_HOST_ECDSA_NISTP521_ML_DSA_87_KEY_FILE SSHDIR "/ssh_host_ecdsa_nistp521_mldsa87_key"
+#ifdef EN_MAYO
 #define _PATH_HOST_MAYO_2_KEY_FILE SSHDIR "/ssh_host_mayo2_key"
 #define _PATH_HOST_RSA3072_MAYO_2_KEY_FILE SSHDIR "/ssh_host_rsa3072_mayo2_key"
 #define _PATH_HOST_ECDSA_NISTP256_MAYO_2_KEY_FILE SSHDIR "/ssh_host_ecdsa_nistp256_mayo2_key"
@@ -66,11 +67,17 @@
 #define _PATH_HOST_ECDSA_NISTP384_MAYO_3_KEY_FILE SSHDIR "/ssh_host_ecdsa_nistp384_mayo3_key"
 #define _PATH_HOST_MAYO_5_KEY_FILE SSHDIR "/ssh_host_mayo5_key"
 #define _PATH_HOST_ECDSA_NISTP521_MAYO_5_KEY_FILE SSHDIR "/ssh_host_ecdsa_nistp521_mayo5_key"
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_ADD_KEY_FILE_PATHS_END
 #define _PATH_DH_MODULI			SSHDIR "/moduli"
 
 #ifndef _PATH_SSH_PROGRAM
 #define _PATH_SSH_PROGRAM		"/usr/bin/ssh"
+#endif
+
+/* Binary paths for the sshd components */
+#ifndef _PATH_SSHD_SESSION
+#define _PATH_SSHD_SESSION		"/usr/libexec/sshd-session"
 #endif
 
 /*
@@ -123,6 +130,7 @@
 #define _PATH_SSH_CLIENT_ID_ECDSA_NISTP384_ML_DSA_65 _PATH_SSH_USER_DIR "/id_ecdsa_nistp384_mldsa65"
 #define _PATH_SSH_CLIENT_ID_ML_DSA_87 _PATH_SSH_USER_DIR "/id_mldsa87"
 #define _PATH_SSH_CLIENT_ID_ECDSA_NISTP521_ML_DSA_87 _PATH_SSH_USER_DIR "/id_ecdsa_nistp521_mldsa87"
+#ifdef EN_MAYO
 #define _PATH_SSH_CLIENT_ID_MAYO_2 _PATH_SSH_USER_DIR "/id_mayo2"
 #define _PATH_SSH_CLIENT_ID_RSA3072_MAYO_2 _PATH_SSH_USER_DIR "/id_rsa3072_mayo2"
 #define _PATH_SSH_CLIENT_ID_ECDSA_NISTP256_MAYO_2 _PATH_SSH_USER_DIR "/id_ecdsa_nistp256_mayo2"
@@ -130,6 +138,7 @@
 #define _PATH_SSH_CLIENT_ID_ECDSA_NISTP384_MAYO_3 _PATH_SSH_USER_DIR "/id_ecdsa_nistp384_mayo3"
 #define _PATH_SSH_CLIENT_ID_MAYO_5 _PATH_SSH_USER_DIR "/id_mayo5"
 #define _PATH_SSH_CLIENT_ID_ECDSA_NISTP521_MAYO_5 _PATH_SSH_USER_DIR "/id_ecdsa_nistp521_mayo5"
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_ADD_ID_FILE_PATHS_END
 
 /*

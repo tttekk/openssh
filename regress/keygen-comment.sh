@@ -38,9 +38,11 @@ for fmt in '' RFC4716 PKCS8 PEM; do
 		*mldsa44*) test -z "$oldfmt" || continue ;;
 		*mldsa65*) test -z "$oldfmt" || continue ;;
 		*mldsa87*) test -z "$oldfmt" || continue ;;
+#ifdef EN_MAYO
 		*mayo2*) test -z "$oldfmt" || continue ;;
 		*mayo3*) test -z "$oldfmt" || continue ;;
 		*mayo5*) test -z "$oldfmt" || continue ;;
+#endif
 ##### OQS_TEMPLATE_FRAGMENT_EXCLUDE_OQS_ALGS_END
 		esac
 		comment="foo bar"

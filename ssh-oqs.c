@@ -66,6 +66,7 @@ static size_t oqs_sig_pk_len(int type)
     case KEY_ECDSA_NISTP384_ML_DSA_65:return OQS_SIG_ml_dsa_65_length_public_key;
     case KEY_ML_DSA_87:
     case KEY_ECDSA_NISTP521_ML_DSA_87:return OQS_SIG_ml_dsa_87_length_public_key;
+#ifdef EN_MAYO
     case KEY_MAYO_2:
     case KEY_RSA3072_MAYO_2:
     case KEY_ECDSA_NISTP256_MAYO_2:return OQS_SIG_mayo_2_length_public_key;
@@ -73,6 +74,7 @@ static size_t oqs_sig_pk_len(int type)
     case KEY_ECDSA_NISTP384_MAYO_3:return OQS_SIG_mayo_3_length_public_key;
     case KEY_MAYO_5:
     case KEY_ECDSA_NISTP521_MAYO_5:return OQS_SIG_mayo_5_length_public_key;
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_RETURN_PK_LEN_END
   }
   return 0;
@@ -107,6 +109,7 @@ static size_t oqs_sig_sk_len(int type)
     case KEY_ML_DSA_87:
     case KEY_ECDSA_NISTP521_ML_DSA_87:
       return OQS_SIG_ml_dsa_87_length_secret_key;
+#ifdef EN_MAYO
     case KEY_MAYO_2:
     case KEY_RSA3072_MAYO_2:
     case KEY_ECDSA_NISTP256_MAYO_2:
@@ -117,6 +120,7 @@ static size_t oqs_sig_sk_len(int type)
     case KEY_MAYO_5:
     case KEY_ECDSA_NISTP521_MAYO_5:
       return OQS_SIG_mayo_5_length_secret_key;
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_RETURN_SK_LEN_END
   }
   return 0;
@@ -1109,6 +1113,7 @@ const struct sshkey_impl sshkey_mldsa87_impl = {
   /* .keybits = */ 0,
   /* .funcs = */ &sshkey_mldsa87_funcs,
 };
+#ifdef EN_MAYO
 /*---------------------------------------------------
  * MAYO_2 METHODS
  *---------------------------------------------------
@@ -1343,6 +1348,7 @@ const struct sshkey_impl sshkey_mayo5_impl = {
   /* .keybits = */ 0,
   /* .funcs = */ &sshkey_mayo5_funcs,
 };
+#endif
 
 #ifdef WITH_OPENSSL
 static const struct sshkey_impl_funcs sshkey_rsa3072_falcon512_funcs = {
@@ -1423,6 +1429,7 @@ const struct sshkey_impl sshkey_rsa3072_mldsa44_impl = {
   /* .keybits = */ 0,
   /* .funcs = */ &sshkey_rsa3072_mldsa44_funcs,
 };
+#ifdef EN_MAYO
 static const struct sshkey_impl_funcs sshkey_rsa3072_mayo2_funcs = {
   /* .size = */ ssh_generic_size,
   /* .alloc = */ ssh_generic_alloc,
@@ -1449,6 +1456,7 @@ const struct sshkey_impl sshkey_rsa3072_mayo2_impl = {
   /* .keybits = */ 0,
   /* .funcs = */ &sshkey_rsa3072_mayo2_funcs,
 };
+#endif
 #ifdef OPENSSL_HAS_ECC
 static const struct sshkey_impl_funcs sshkey_ecdsanistp256_falcon512_funcs = {
   /* .size = */ ssh_generic_size,
@@ -1632,6 +1640,7 @@ const struct sshkey_impl sshkey_ecdsanistp521_mldsa87_impl = {
   /* .keybits = */ 0,
   /* .funcs = */ &sshkey_ecdsanistp521_mldsa87_funcs,
 };
+#ifdef EN_MAYO
 static const struct sshkey_impl_funcs sshkey_ecdsanistp256_mayo2_funcs = {
   /* .size = */ ssh_generic_size,
   /* .alloc = */ ssh_generic_alloc,
@@ -1710,6 +1719,7 @@ const struct sshkey_impl sshkey_ecdsanistp521_mayo5_impl = {
   /* .keybits = */ 0,
   /* .funcs = */ &sshkey_ecdsanistp521_mayo5_funcs,
 };
+#endif
 #endif /* OPENSSL_HAS_ECC */
 #endif /* WITH_OPENSSL */
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_SIG_FUNCTIONS_END
@@ -1771,6 +1781,7 @@ const struct sshkey_impl *oqs_pq_sshkey_impl(const struct sshkey *k)
     case KEY_ECDSA_NISTP521_ML_DSA_87:
       impl = &sshkey_mldsa87_impl;
       break;
+#ifdef EN_MAYO
     case KEY_MAYO_2:
     case KEY_RSA3072_MAYO_2:
     case KEY_ECDSA_NISTP256_MAYO_2:
@@ -1784,6 +1795,7 @@ const struct sshkey_impl *oqs_pq_sshkey_impl(const struct sshkey *k)
     case KEY_ECDSA_NISTP521_MAYO_5:
       impl = &sshkey_mayo5_impl;
       break;
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_IMPL_LOOKUP_CASES_END
     default:
       break;

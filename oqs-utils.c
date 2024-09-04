@@ -9,8 +9,10 @@ int oqs_utils_is_rsa_hybrid(int keytype) {
             return 1;
         case KEY_RSA3072_ML_DSA_44:
             return 1;
+#ifdef EN_MAYO
         case KEY_RSA3072_MAYO_2:
             return 1;
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_LIST_RSA_HYBRIDS_END
     }
     return 0;
@@ -33,12 +35,14 @@ int oqs_utils_is_ecdsa_hybrid(int keytype) {
             return 1;
         case KEY_ECDSA_NISTP521_ML_DSA_87:
             return 1;
+#ifdef EN_MAYO
         case KEY_ECDSA_NISTP256_MAYO_2:
             return 1;
         case KEY_ECDSA_NISTP384_MAYO_3:
             return 1;
         case KEY_ECDSA_NISTP521_MAYO_5:
             return 1;
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_LIST_ECDSA_HYBRIDS_END
     }
     return 0;

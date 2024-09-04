@@ -1,4 +1,4 @@
-/* $OpenBSD: ssh-keysign.c,v 1.73 2024/01/11 01:51:16 djm Exp $ */
+/* $OpenBSD: ssh-keysign.c,v 1.74 2024/04/30 05:53:03 djm Exp $ */
 /*
  * Copyright (c) 2002 Markus Friedl.  All rights reserved.
  *
@@ -227,6 +227,7 @@ main(int argc, char **argv)
 	key_fd[i++] = open(_PATH_HOST_ECDSA_NISTP384_ML_DSA_65_KEY_FILE, O_RDONLY);
 	key_fd[i++] = open(_PATH_HOST_ML_DSA_87_KEY_FILE, O_RDONLY);
 	key_fd[i++] = open(_PATH_HOST_ECDSA_NISTP521_ML_DSA_87_KEY_FILE, O_RDONLY);
+#ifdef EN_MAYO
 	key_fd[i++] = open(_PATH_HOST_MAYO_2_KEY_FILE, O_RDONLY);
 	key_fd[i++] = open(_PATH_HOST_RSA3072_MAYO_2_KEY_FILE, O_RDONLY);
 	key_fd[i++] = open(_PATH_HOST_ECDSA_NISTP256_MAYO_2_KEY_FILE, O_RDONLY);
@@ -234,6 +235,7 @@ main(int argc, char **argv)
 	key_fd[i++] = open(_PATH_HOST_ECDSA_NISTP384_MAYO_3_KEY_FILE, O_RDONLY);
 	key_fd[i++] = open(_PATH_HOST_MAYO_5_KEY_FILE, O_RDONLY);
 	key_fd[i++] = open(_PATH_HOST_ECDSA_NISTP521_MAYO_5_KEY_FILE, O_RDONLY);
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_OPEN_KEY_FILES_END
 	if ((pw = getpwuid(getuid())) == NULL)
 		fatal("getpwuid failed");
@@ -295,7 +297,7 @@ main(int argc, char **argv)
 		    __progname, rver, version);
 	if ((r = sshbuf_get_u32(b, (u_int *)&fd)) != 0)
 		fatal_r(r, "%s: buffer error", __progname);
-	if (fd < 0 || fd == STDIN_FILENO || fd == STDOUT_FILENO)
+	if (fd <= STDERR_FILENO)
 		fatal("%s: bad fd = %d", __progname, fd);
 	if ((host = get_local_name(fd)) == NULL)
 		fatal("%s: cannot get local name for fd", __progname);

@@ -1,4 +1,4 @@
-#	$OpenBSD: Makefile,v 1.133 2024/01/11 04:50:28 djm Exp $
+#	$OpenBSD: Makefile,v 1.135 2024/06/14 04:43:11 djm Exp $
 
 tests:		prep file-tests t-exec unit
 
@@ -109,7 +109,9 @@ LTESTS= 	connect \
 		connection-timeout \
 		match-subsystem \
 		agent-pkcs11-restrict \
-		agent-pkcs11-cert
+		agent-pkcs11-cert \
+		penalty \
+		penalty-expire
 
 INTEROP_TESTS=	putty-transfer putty-ciphers putty-kex conch-ciphers
 INTEROP_TESTS+=	dropbear-ciphers dropbear-kex
@@ -146,10 +148,7 @@ CLEANFILES=	*.core actual agent-key.* authorized_keys_${USERNAME} \
 		sshd_proxy_orig t10.out t10.out.pub t12.out t12.out.pub \
 		t2.out t3.out t6.out1 t6.out2 t7.out t7.out.pub \
 		t8.out t8.out.pub t9.out t9.out.pub \
-		timestamp testdata user_*key* user_ca* user_key* \
-		*dilith* *falco* *picni* *sphincs* \
-		ecdsa-sha2-nistp* sk-* ssh-dss* ssh-rsa* ssh-ed25519* \
-		host.sk-* copy authkeys_orig sshd_config_minimal check-perm mkdtemp
+		timestamp testdata user_*key* user_ca* user_key*
 
 # Enable all malloc(3) randomisations and checks
 TEST_ENV=      "MALLOC_OPTIONS=CFGJRSUX"
@@ -278,7 +277,6 @@ t-exec-interop:	${INTEROP_TESTS:=.sh}
 	@if [ "x$?" = "x" ]; then exit 0; fi; \
 	for TEST in ""$?; do \
 		echo "run test $${TEST}" ... 1>&2; \
-		chmod go-rwx .; \
 		(env SUDO="${SUDO}" TEST_ENV=${TEST_ENV} ${TEST_SHELL} ${.CURDIR}/test-exec.sh ${.OBJDIR} ${.CURDIR}/$${TEST}) || exit $$?; \
 	done
 
