@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/open-quantum-safe/openssh/tree/OQS-v8.svg?style=svg)](https://circleci.com/gh/open-quantum-safe/openssh/tree/OQS-v8)
-
 OQS-OpenSSH
 ==================================
 
@@ -225,6 +223,7 @@ Contributors to this fork of OpenSSH include:
 - Douglas Stebila (University of Waterloo)
 - Goutam Tamvada (University of Waterloo)
 - Michael Baentsch
+- Gerardo Ravago (Amazon Web Services)
 
 Contributors to an earlier OQS fork of OpenSSH included:
 
